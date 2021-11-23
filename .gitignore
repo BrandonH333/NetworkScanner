@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # CSV data
-.csv
+*.csv
