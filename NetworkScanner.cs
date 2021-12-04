@@ -10,6 +10,7 @@ namespace NetworkScanner
         NetPinger netPing = new NetPinger();
         bool continueScan = true;
 
+        // Constructor to kick off network scanner
         public NetworkScanner()
         {
             InitializeComponent();            

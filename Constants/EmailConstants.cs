@@ -16,8 +16,8 @@
         
         public const bool SslEnabled = false;
         
-        public const string SslUsername = "*";
+        public const string SslUsername = "";
 
-        public const string SslPassword = "*";
+        public const string SslPassword = "";
     }
 }

@@ -93,10 +93,8 @@ namespace NetworkScanner
                 tasks.Add(task);
             }
 
-            var moreTasks = new List<Task>();
-
             // Due to multi threading, we need to make sure all tasks are completed before continuing
-            moreTasks.Add(await Task.WhenAll(tasks).ContinueWith(async t =>
+            await Task.WhenAll(tasks).ContinueWith(async t =>
             {
                 // Get latest ping results and saved ping results
                 var latestPingResults = networkDataList.Select(x => x.IpAddress);
@@ -188,7 +186,7 @@ namespace NetworkScanner
                         }
                     }
                 }
-            }));
+            });
 
             // Invoke print event to display network data on windows form app
             PrintEvent?.Invoke(this, string.Empty);
@@ -242,7 +240,7 @@ namespace NetworkScanner
             var host = await Dns.GetHostEntryAsync(Dns.GetHostName());
             foreach (var ip in host.AddressList)
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                if (ip.AddressFamily == AddressFamily.InterNetwork && ip.ToString().StartsWith("192"))
                 {
                     myIpAddress = ip.ToString();
                     break;
